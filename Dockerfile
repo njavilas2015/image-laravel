@@ -15,6 +15,8 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     && rm -rf /var/lib/apt/lists/*
 
+ENV SHELL=/bin/bash
+
 RUN docker-php-ext-install zip curl mbstring xml pdo pdo_mysql
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
