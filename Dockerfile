@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 ENV SHELL=/bin/bash
+ENV PATH="/home/vscode/.composer/vendor/bin:${PATH}"
 
 RUN docker-php-ext-install zip curl mbstring xml pdo pdo_mysql
 
@@ -27,11 +28,9 @@ RUN groupadd --gid $USER_GID $USERNAME \
 
 RUN echo "source /usr/share/bash-completion/completions/git" >> /home/vscode/.bashrc
 
-RUN composer global require friendsofphp/php-cs-fixer
-
-ENV PATH="/home/vscode/.composer/vendor/bin:${PATH}"
-
 USER $USERNAME
+
+RUN composer global require friendsofphp/php-cs-fixer
 
 WORKDIR /app
 
