@@ -29,7 +29,7 @@ RUN echo "source /usr/share/bash-completion/completions/git" >> /home/vscode/.ba
 
 RUN composer global require friendsofphp/php-cs-fixer
 
-RUN export PATH="$HOME/.composer/vendor/bin:$PATH"
+ENV PATH="/home/vscode/.composer/vendor/bin:${PATH}"
 
 USER $USERNAME
 
