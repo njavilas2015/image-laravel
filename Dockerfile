@@ -27,6 +27,10 @@ RUN groupadd --gid $USER_GID $USERNAME \
 
 RUN echo "source /usr/share/bash-completion/completions/git" >> /home/vscode/.bashrc
 
+RUN composer global require friendsofphp/php-cs-fixer
+
+RUN export PATH="$HOME/.composer/vendor/bin:$PATH"
+
 USER $USERNAME
 
 WORKDIR /app
